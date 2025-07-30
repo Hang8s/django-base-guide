@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Categoty(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=100,db_index=True)
     slug = models.SlugField(max_length=100,unique=True)
     
@@ -15,7 +15,7 @@ class Categoty(models.Model):
         return self.name
     
 class Product(models.Model):
-    category = models.ForeignKey(Categoty, related_name='products',
+    category = models.ForeignKey(Category, related_name='products',
                                  on_delete=models.CASCADE)
     
     name = models.CharField(max_length=100,db_index=True)
